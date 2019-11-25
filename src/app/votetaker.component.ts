@@ -16,6 +16,7 @@ export class VoteTakerComponent {
   disagreed = 0;
   voters = ['Narco', 'Celeritas', 'Bombasto'];
 
+  // 绑定一个事件处理器,用来响应子组件的事件($event)并更新一个计数器
   onVoted(agreed: boolean) {
     agreed ? this.agreed++ : this.disagreed++;
   }

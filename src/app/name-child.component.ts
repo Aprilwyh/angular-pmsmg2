@@ -9,6 +9,7 @@ export class NameChildComponent {
 
   @Input()
   set name(name: string) {
+    // trim掉名字里的空格，并把空值替换成<no name set>字符串
     this._name = (name && name.trim()) || '<no name set>';
   }
 

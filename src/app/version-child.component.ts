@@ -15,7 +15,10 @@ export class VersionChildComponent implements OnChanges {
   @Input() major: number;
   @Input() minor: number;
   changeLog: string[] = [];
-
+  
+  // 通过钩子函数截听输入属性值的变化
+  // 需要监视多个、交互式输入属性的时候，比用属性的setter更合适
+  // version-parent中点击按钮后，ngOnChanges 应该被调用
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
     let log: string[] = [];
     for (let propName in changes) {

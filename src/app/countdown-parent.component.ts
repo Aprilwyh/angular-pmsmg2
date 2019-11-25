@@ -11,6 +11,8 @@ import { CountdownTimerComponent }  from './countdown-timer.component';
   <button (click)="timer.start()">Start</button>
   <button (click)="timer.stop()">Stop</button>
   <div class="seconds">{{timer.seconds}}</div>
+  <!-- 父组件不能通过数据绑定使用子组件的 start 和 stop 方法，也不能访问子组件的 seconds 属性
+  把本地变量(#timer)放到(<countdown-timer>)标签中，用来代表子组件.父组件的模板得到了子组件的引用,可以在父组件的模板中访问子组件的所有属性和方法。 -->
   <app-countdown-timer #timer></app-countdown-timer>
   `,
   styleUrls: ['../assets/demo.css']

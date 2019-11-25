@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class NameParentComponent {
   // Displays 'Dr IQ', '<no name set>', 'Bombasto'
+  // 去掉首尾空格展示，如果为空就展示默认字符串
   names = ['Dr IQ', '   ', '  Bombasto  '];
 }
 

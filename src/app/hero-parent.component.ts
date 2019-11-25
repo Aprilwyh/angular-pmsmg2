@@ -6,8 +6,11 @@ import { HEROES } from './hero';
   selector: 'app-hero-parent',
   template: `
     <h2>{{master}} controls {{heroes.length}} heroes</h2>
+    循环子组件
     <app-hero-child *ngFor="let hero of heroes"
+      把每个循环的hero实例绑定到子组件的hero属性
       [hero]="hero"
+      把自己的master字符串属性绑定到子组件的master别名上
       [master]="master">
     </app-hero-child>
   `

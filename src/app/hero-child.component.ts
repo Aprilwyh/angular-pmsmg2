@@ -10,7 +10,9 @@ import { Hero } from './hero';
   `
 })
 export class HeroChildComponent {
+  // 输入型属性通常带@Input装饰器
   @Input() hero: Hero;
+  // 为子组件的属性名masterName指定一个别名master（不过不推荐）
   @Input('master') masterName: string;
 }
 
