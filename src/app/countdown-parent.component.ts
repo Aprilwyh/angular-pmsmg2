@@ -27,24 +27,27 @@ export class CountdownLocalVarParentComponent { }
   <button (click)="start()">Start</button>
   <button (click)="stop()">Stop</button>
   <div class="seconds">{{ seconds() }}</div>
+  组件元数据里不再需要 #timer 本地变量
   <app-countdown-timer></app-countdown-timer>
   `,
   styleUrls: ['../assets/demo.css']
 })
 export class CountdownViewChildParentComponent implements AfterViewInit {
-
+  // 父组件想要访问子组件的属性或方法时，把子组件作为ViewChild注入到父组件
+  // 父组件：countdown-parent，子组件：countdown-timer
   @ViewChild(CountdownTimerComponent, {static: false})
   private timerComponent: CountdownTimerComponent;
 
   seconds() { return 0; }
 
+  // 被注入的计时器组件只有在 Angular 显示了父组件视图之后才能访问，所以它先把秒数显示为 0.
   ngAfterViewInit() {
     // Redefine `seconds()` to get from the `CountdownTimerComponent.seconds` ...
     // but wait a tick first to avoid one-time devMode
     // unidirectional-data-flow-violation error
     setTimeout(() => this.seconds = () => this.timerComponent.seconds, 0);
   }
-
+  // 组件通过这种方式调用子组件的方法
   start() { this.timerComponent.start(); }
   stop() { this.timerComponent.stop(); }
 }
